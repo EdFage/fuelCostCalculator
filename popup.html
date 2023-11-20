@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fuel Cost Calculator</title>
+    <script src="popup.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <h1>Fuel Cost Calculator</h1>
+    <form id="fuelForm">
+        <br>
+        <label for="efficiency">Efficiency of car:</label>
+        <input type="number" id="efficiency" placeholder="Enter efficiency" size="4" required>
+        <select id="efficiencyUnit">
+            <option value="mpg_us">Miles per Gallon (US)</option>
+            <option value="mpg_uk">Miles per Gallon (UK)</option>
+            <option value="kpl">Kilometres per Litre</option>
+        </select>
+        <br>
+        <label for="fuelPrice">Fuel Price (in local currency):</label>
+        <input type="number" id="fuelPrice" placeholder="Enter price" required>
+        <br>
+        <label for="priceUnit">Fuel Price Unit:</label>
+        <select id="priceUnit">
+            <option value="us_gallon">per Gallon (US)</option>
+            <option value="uk_gallon">per Gallon (UK)</option>
+            <option value="litre">per Litre</option>
+        </select>
+        <br>
+
+        <label for="currency">Currency:</label>
+        <select id="currency">
+            <option value="$">USD ($)</option>
+            <option value="€">EUR (€)</option>
+            <option value="£">GBP (£)</option>
+            <option value="¥">JPY (¥)</option>
+            <option value="$">CAD ($)</option>
+            <option value="$">AUD ($)</option>
+            <option value="Prices">Other <option>
+
+            <!-- Add more currencies as needed -->
+        </select>
+        <br>
+
+        <label for="mapUnit">Google Maps Unit:</label>
+        <select id="mapUnit">
+            <option value="miles">Miles</option>
+            <option value="kilometres">Kilometres</option>
+        </select>
+        <br>
+
+        <button type="button" id="saveButton">Save</button>
+        <span id="saveMessage" style="display: none; margin-left: 10px;"></span>
+    </form>
+<a href="https://airtable.com/appa1MxZFWAr5SLvQ/shrji4UIbwhLAw2Yu"> Click here to submit a bug report or feature request </a>
+<br>
+<footer>
+    <a href="https://www.flaticon.com/free-icons/fuel" title="fuel icons" font-size = 10px class="smallLink">Fuel icons created by Freepik - Flaticon</a>
+</footer>
+
+</body>
+</html>

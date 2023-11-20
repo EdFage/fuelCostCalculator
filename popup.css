@@ -1,0 +1,12 @@
+html
+{
+    width: 350px; 
+}
+
+.smallLink {
+    color: gray;
+    font-size: 10px;
+    font-style: italic;
+}
+
+
