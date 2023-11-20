@@ -1,6 +1,17 @@
 html
 {
-    width: 400px; 
+    width: 350px; 
+}
+body {
+    text-align: right;
+}
+h1 {
+    margin-bottom: 0;
+    text-align: right;
+}
+
+form {
+    margin-top: 0;
 }
 
 .smallLink {
