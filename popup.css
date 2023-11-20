@@ -1,12 +1,16 @@
 html
 {
-    width: 350px; 
+    width: 400px; 
 }
 
 .smallLink {
     color: gray;
     font-size: 10px;
     font-style: italic;
+}
+
+.numInput {
+    width: 30px
 }
 
 
