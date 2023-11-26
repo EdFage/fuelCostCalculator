@@ -1,19 +1,15 @@
 
 chrome.runtime.onMessage.addListener( 
         function(message) {
-
             
             //find the distance divs
             let distanceDivs = document.getElementsByClassName("ivN21e tUEI8e fontBodyMedium");
-
 
             //make an array to use later 
             let distanceDivsArray = Array.from(distanceDivs);
 
             //check that there are no exisitng fuel divs
             let fuelDivs = document.getElementsByClassName("ivN21e tUEI8e fontBodyMedium FuelCost");
-
-
 
             if (fuelDivs.length == 0){
             
