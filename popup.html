@@ -1,60 +1,80 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <title>Fuel Cost Calculator</title>
-    <script src="popup.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="popup.css">
-</head>
-<body>
-    <h1>Fuel Cost Calculator</h1>
-    <form id="fuelForm">
-        <br>
-        <label for="efficiency">Car Fuel Efficiency:</label>
-        <input type="number" class="numInput" id="efficiency" required>
-        <select id="efficiencyUnit">
-            <option value="mpg_us">Miles per Gallon (US)</option>
-            <option value="mpg_uk">Miles per Gallon (UK)</option>
-            <option value="kpl">Kilometres per Litre</option>
-        </select>
-        <br>
-        <label for="fuelPrice">Fuel Price:</label>
-        <input type="number" id="fuelPrice" placeholder="Enter price" style="width: 50px" required>
-        </select>
-        <select id="currency">
-            <option value="$">USD ($)</option>
-            <option value="€">EUR (€)</option>
-            <option value="£">GBP (£)</option>
-            <option value="¥">JPY (¥)</option>
-            <option value="$">CAD ($)</option>
-            <option value="$">AUD ($)</option>
-            <option value="Prices">Other </option>
-            <!-- Add more currencies as needed -->
-        </select>
-        <select id="priceUnit">
-            <option value="us_gallon">per Gallon (US)</option>
-            <option value="uk_gallon">per Gallon (UK)</option>
-            <option value="litre">per Litre</option>
-        </select>    
-        <br>
+    <head>
+        <title>Fuel Cost Calculator</title>
+        <script src="popup.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <h1>Fuel Cost Calculator</h1>
+        <form id="fuelForm">
+            <br />
+            <label for="efficiency">Car Fuel Efficiency:</label>
+            <input type="number" class="numInput" id="efficiency" required />
+            <select id="efficiencyUnit">
+                <option value="mpg_us">Miles per Gallon (US)</option>
+                <option value="mpg_uk">Miles per Gallon (UK)</option>
+                <option value="kpl">Kilometres per Litre</option>
+            </select>
+            <br />
+            <label for="fuelPrice">Fuel Price:</label>
+            <input
+                type="number"
+                id="fuelPrice"
+                placeholder="Enter price"
+                style="width: 50px"
+                required
+            />
 
-        <label for="mapUnit">Google Maps Unit:</label>
-        <select id="mapUnit">
-            <option value="miles">Miles</option>
-            <option value="kilometres">Kilometres</option>
-        </select>
-        <br>
+            <select id="currency">
+                <option value="$">USD ($)</option>
+                <option value="€">EUR (€)</option>
+                <option value="£">GBP (£)</option>
+                <option value="¥">JPY (¥)</option>
+                <option value="$">CAD ($)</option>
+                <option value="$">AUD ($)</option>
+                <option value="Prices">Other</option>
+                <!-- Add more currencies as needed -->
+            </select>
+            <select id="priceUnit">
+                <option value="us_gallon">per Gallon (US)</option>
+                <option value="uk_gallon">per Gallon (UK)</option>
+                <option value="litre">per Litre</option>
+            </select>
+            <br />
 
-        <button type="button" id="saveButton">Save</button>
-        <span id="saveMessage" style="display: none; margin-left: 10px;"></span>
-    </form>
-<p>
-    Submit a bug report or feature request via <a href="https://github.com/EdFage/fuelCostCalculator/issues">github</a>
-    or <a href="https://airtable.com/appa1MxZFWAr5SLvQ/shrji4UIbwhLAw2Yu">this form</a>.
-</p>
-<footer>
-    <a href="https://www.flaticon.com/free-icons/fuel" title="fuel icons" font-size = 10px class="smallLink">Extension icon created by Freepik</a>
-</footer>
+            <label for="mapUnit">Google Maps Unit:</label>
+            <select id="mapUnit">
+                <option value="miles">Miles</option>
+                <option value="kilometres">Kilometres</option>
+            </select>
+            <br />
 
-</body>
+            <button type="button" id="saveButton">Save</button>
+            <span
+                id="saveMessage"
+                style="display: none; margin-left: 10px"
+            ></span>
+        </form>
+        <p>
+            Submit a bug report or feature request via
+            <a href="https://github.com/EdFage/fuelCostCalculator/issues"
+                >github</a
+            >
+            or
+            <a href="https://airtable.com/appa1MxZFWAr5SLvQ/shrji4UIbwhLAw2Yu"
+                >this form</a
+            >.
+        </p>
+        <footer>
+            <a
+                href="https://www.flaticon.com/free-icons/fuel"
+                title="fuel icons"
+                font-size="10px"
+                class="smallLink"
+                >Extension icon created by Freepik</a
+            >
+        </footer>
+    </body>
 </html>
