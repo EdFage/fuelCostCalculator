@@ -10,6 +10,6 @@ This extension calculates your fuel costs for driving directions in Google Maps.
 
 ## Bugs and Feature Requests
 
-Please email me on edfagedeveloper@gmail.com orsubmit an issue request [here](https://github.com/EdFage/fuelCostCalculator/issues) and I will get back to you!
+Please email me on edfagedeveloper@gmail.com or submit an issue request [here](https://github.com/EdFage/fuelCostCalculator/issues) and I will get back to you!
 
 Happy driving :)
