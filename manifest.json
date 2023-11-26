@@ -18,6 +18,6 @@
         "default_popup": "popup.html"
     },
     "icons": {
-        "128": "gas.png"
+        "128": "128icon.png"
     }
 }
