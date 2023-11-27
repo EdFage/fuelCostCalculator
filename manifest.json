@@ -3,7 +3,7 @@
     "name": "Google Maps Fuel Cost Calculator",
     "version": "0.1.0",
     "description": "Estimates fuel cost of a driving journey in google maps",
-    "permissions": ["tabs", "scripting", "storage"],
+    "permissions": ["tabs", "storage"],
     "host_permissions": ["https://www.google.com/maps/*"],
     "content_scripts": [
         {
