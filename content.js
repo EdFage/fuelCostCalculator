@@ -33,13 +33,6 @@ chrome.runtime.onMessage.addListener(function (message) {
     }
 })
 
-function updateTripCostDisplay(distance, div) {
-    calculateTripCost(distance, function (cost) {
-        if (div) {
-            div.innerHTML = `${cost}`
-        }
-    })
-}
 
 function calculateTripCost(distance, callback) {
     // Retrieve stored values from chrome.storage.sync
@@ -55,18 +48,32 @@ function calculateTripCost(distance, callback) {
             'costPerMile',
         ],
         function (data) {
-            let cost
-            // Check the map unit and calculate the cost accordingly
-            if (data.mapUnit === 'miles') {
-                cost = distance * data.costPerMile
-            } else {
-                cost = distance * data.costPerKilometre
+            if(data.costPerKilometre){
+                let cost
+                // Check the map unit and calculate the cost accordingly
+                if (data.mapUnit === 'miles') {
+                    cost = distance * data.costPerMile
+                } else {
+                    cost = distance * data.costPerKilometre
+                }
+                // Format the cost to two decimal places and include the currency
+                const formattedCost = `${data.currency}${cost.toFixed(2)}`
+    
+                // Callback function to use the computed cost
+                callback(formattedCost)
+            } else{
+                const divInfo = "Please input vehicle data in the extension popup to calculate fuel cost";
+                callback(divInfo);
             }
-            // Format the cost to two decimal places and include the currency
-            const formattedCost = `${data.currency}${cost.toFixed(2)}`
-
-            // Callback function to use the computed cost
-            callback(formattedCost)
+            
         }
     )
+}
+
+function updateTripCostDisplay(distance, div) {
+    calculateTripCost(distance, function (cost) {
+        if (div) {
+            div.innerHTML = `${cost}`
+        }
+    })
 }
