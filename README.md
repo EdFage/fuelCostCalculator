@@ -4,9 +4,12 @@ This extension calculates your fuel costs for driving directions in Google Maps.
 
 ## How it works
 
-1.  Input your vehicle data by clicking on the chrome extension's icon in the toolbar to open the popup.
-2.  Navigate to any directions page in google maps.
-3.  The estimated fuel cost appears below the distance.
+1.  Input your vehicle data:
+    1. Pin the Chrome extension.
+    2. Click on the chrome extension's icon in the toolbar to open the popup.
+    3. Input your data.
+3.  Navigate to any directions page in Google Maps.
+4.  The estimated fuel cost appears below the distance.
 
 ## Bugs and Feature Requests
 
