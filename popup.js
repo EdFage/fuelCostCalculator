@@ -1,5 +1,5 @@
+//Things to do once popup has loaded
 document.addEventListener('DOMContentLoaded', function () {
-    // Elements from the DOM
     var efficiencyInput = document.getElementById('efficiency')
     var efficiencyUnitSelect = document.getElementById('efficiencyUnit')
     var fuelPriceInput = document.getElementById('fuelPrice')
@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var currencySelect = document.getElementById('currency')
     var mapUnitSelect = document.getElementById('mapUnit')
     var saveButton = document.getElementById('saveButton')
+
 
     // Fetch and pre-fill the form with previously saved values
     chrome.storage.sync.get(
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     )
 
+    // Do the conversions 
     saveButton.addEventListener('click', function () {
         var efficiency = parseFloat(document.getElementById('efficiency').value)
         var efficiencyInputted = efficiency
@@ -69,15 +71,19 @@ document.addEventListener('DOMContentLoaded', function () {
         // Efficiency is now in KPL
 
         // Convert fuel price to price per litre
+        var fuelPricePerLitre
         if (priceUnit === 'us_gallon') {
-            fuelPrice = fuelPrice / litreToUSGallon
+            fuelPricePerLitre = fuelPrice / litreToUSGallon
         } else if (priceUnit === 'uk_gallon') {
-            fuelPrice = fuelPrice / litreToUKGallon
+            fuelPricePerLitre = fuelPrice / litreToUKGallon
+        }
+        else {
+            fuelPricePerLitre = fuelPrice
         }
         // Fuel price is now per litre
 
         // Calculate cost per kilometre and cost per mile
-        costPerKilometre = fuelPrice / efficiency
+        costPerKilometre = fuelPricePerLitre / efficiency
         costPerMile = costPerKilometre * mileToKilometre
 
         // Save settings and computed costs as floats
