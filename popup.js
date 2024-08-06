@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Conversion factors
         const mpgUsToKpl = 0.425144
         const mpgUkToKpl = 0.354006
-        const litreToUSGallon = 3.785411784
-        const litreToUKGallon = 4.54609
+        const literToUSGallon = 3.785411784
+        const literToUKGallon = 4.54609
         const mileToKilometre = 1.609344
 
         // Convert efficiency to KPL
@@ -74,20 +74,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         // efficiency is now in KPL
 
-        // Convert fuel price to price per litre
-        var fuelPricePerLitre
+        // Convert fuel price to price per liter
+        var fuelPricePerliter
         if (priceUnit === 'us_gallon') {
-            fuelPricePerLitre = fuelPrice / litreToUSGallon
+            fuelPricePerliter = fuelPrice / literToUSGallon
         } else if (priceUnit === 'uk_gallon') {
-            fuelPricePerLitre = fuelPrice / litreToUKGallon
+            fuelPricePerliter = fuelPrice / literToUKGallon
         }
         else {
-            fuelPricePerLitre = fuelPrice
+            fuelPricePerliter = fuelPrice
         }
-        // Fuel price is now per litre
+        // Fuel price is now per liter
 
         // Calculate cost per kilometre and cost per mile
-        costPerKilometre = fuelPricePerLitre / efficiency
+        costPerKilometre = fuelPricePerliter / efficiency
         costPerMile = costPerKilometre * mileToKilometre
 
         // Save settings and computed costs as floats
