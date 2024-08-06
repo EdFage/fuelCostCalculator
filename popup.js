@@ -45,8 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Do the conversions 
     saveButton.addEventListener('click', function () {
-        var efficiency = parseFloat(document.getElementById('efficiency').value)
-        var efficiencyInputted = efficiency
+        var efficiencyInputted = parseFloat(document.getElementById('efficiency').value)
         var efficiencyUnit = document.getElementById('efficiencyUnit').value
         var fuelPrice = parseFloat(document.getElementById('fuelPrice').value)
         var priceUnit = document.getElementById('priceUnit').value
@@ -64,11 +63,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Convert efficiency to KPL
         if (efficiencyUnit === 'mpg_us') {
-            efficiency = efficiency * mpgUsToKpl
+            efficiency = efficiencyInputted * mpgUsToKpl
         } else if (efficiencyUnit === 'mpg_uk') {
-            efficiency = efficiency * mpgUkToKpl
+            efficiency = efficiencyInputted * mpgUkToKpl
+        } else if (efficiencyUnit === 'l_per_100_km'){
+            efficiency = 100 / efficiencyInputted; // Converting L/100 km to KPL
         }
-        // Efficiency is now in KPL
+        else {
+            efficiency = efficiencyInputted
+        }
+        // efficiency is now in KPL
 
         // Convert fuel price to price per litre
         var fuelPricePerLitre
