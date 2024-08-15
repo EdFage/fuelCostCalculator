@@ -12,9 +12,16 @@ chrome.runtime.onMessage.addListener(function (message) {
         // Create a new node for the fuel cost
         distanceDivsArray.forEach(function (div) {
             // Get distance and convert it to a number, considering commas for thousands
-            var textContent = div.textContent.replace(',', '');
-            var matches = textContent.match(/[\d\.]+/);
-            var distance = matches ? parseFloat(matches[0]) : null;
+            var distanceDiv = Array.from(div.children).find(child => {
+                return /miles|km/.test(child.textContent);
+            });
+    
+            // If distanceDiv is found, extract the distance
+            if (distanceDiv) {
+                var textContent = distanceDiv.textContent.replace(',', '');
+                var matches = textContent.match(/[\d\.]+/);
+                var distance = matches ? parseFloat(matches[0]) : null;
+            } 
 
             if (distance !== null) {
                 // Make a new fuel cost div
