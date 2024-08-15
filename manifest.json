@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Google Maps Fuel Cost Calculator",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "Calculate your fuel costs in Google Maps. Works worldwide: any currency, any car, any fuel units.",
     "permissions": ["activeTab", "storage"],
     "host_permissions": ["https://www.google.com/maps/*", "https://www.google.co.uk/maps/*"],
