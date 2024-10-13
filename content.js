@@ -11,16 +11,31 @@ chrome.runtime.onMessage.addListener(function (message) {
     if (fuelDivs.length == 0) {
         // Create a new node for the fuel cost
         distanceDivsArray.forEach(function (div) {
-            // Get distance and convert it to a number, considering commas for thousands
+            // Get distance and convert it to a number, considering commas for thousands and commas for decimals
             var distanceDiv = Array.from(div.children).find(child => {
                 return /miles|km/.test(child.textContent);
             });
     
             // If distanceDiv is found, extract the distance
             if (distanceDiv) {
-                var textContent = distanceDiv.textContent.replace(',', '');
-                var matches = textContent.match(/[\d\.]+/);
-                var distance = matches ? parseFloat(matches[0]) : null;
+                var textContent = distanceDiv.textContent.replace('\u00a0', '').replace(' ', ''); // Replace non-breaking spaces and normal spaces
+                var matches = textContent.match(/([\d,\.]+)/);
+                var distance = null;
+                
+                if (matches) {
+                    let rawDistance = matches[0];
+                    
+                    // Check if the penultimate character is a comma, meaning it's a decimal separator
+                    if (rawDistance.length > 1 && rawDistance[rawDistance.length - 2] === ',') {
+                        // Replace the comma with a period for decimal
+                        rawDistance = rawDistance.replace(',', '.');
+                    } else {
+                        // Remove any commas that are thousand separators
+                        rawDistance = rawDistance.replace(/,/g, '');
+                    }
+                    
+                    distance = parseFloat(rawDistance);
+                }
             } 
 
             if (distance !== null) {
