@@ -11,30 +11,43 @@ chrome.runtime.onMessage.addListener(function (message) {
     if (fuelDivs.length == 0) {
         // Create a new node for the fuel cost
         distanceDivsArray.forEach(function (div) {
-            // Get distance and convert it to a number, considering commas for thousands and commas for decimals
+            // Get distance and convert it to a number, considering international formats
             var distanceDiv = Array.from(div.children).find(child => {
-                return /miles|km/.test(child.textContent);
+                // Include χλμ (Greek for km) in the regex
+                return /miles|km|χλμ\.?/.test(child.textContent);
             });
     
             // If distanceDiv is found, extract the distance
             if (distanceDiv) {
-                var textContent = distanceDiv.textContent.replace('\u00a0', '').replace(' ', ''); // Replace non-breaking spaces and normal spaces
+                var textContent = distanceDiv.textContent
+                    .replace('\u00a0', '') // Replace non-breaking spaces
+                    .replace(' ', '')      // Replace normal spaces
+                    .trim();              // Remove any trailing/leading whitespace
+                
+                // Enhanced regex to capture numbers with either dots or commas
                 var matches = textContent.match(/([\d,\.]+)/);
                 var distance = null;
                 
                 if (matches) {
                     let rawDistance = matches[0];
                     
-                    // Check if the penultimate character is a comma, meaning it's a decimal separator
-                    if (rawDistance.length > 1 && rawDistance[rawDistance.length - 2] === ',') {
-                        // Replace the comma with a period for decimal
+                    // First, handle the case where comma is used as decimal separator
+                    // This covers formats like "17,2" (European style)
+                    if (rawDistance.split(',').length === 2 && rawDistance.indexOf('.') === -1) {
                         rawDistance = rawDistance.replace(',', '.');
-                    } else {
-                        // Remove any commas that are thousand separators
+                    } 
+                    // Then handle cases where comma is used as thousands separator
+                    else if (rawDistance.split(',').length > 1) {
                         rawDistance = rawDistance.replace(/,/g, '');
                     }
                     
                     distance = parseFloat(rawDistance);
+                    
+                    // Verify that we got a valid number
+                    if (isNaN(distance)) {
+                        console.error('Failed to parse distance from:', textContent);
+                        return;
+                    }
                 }
             } 
 
@@ -53,8 +66,8 @@ chrome.runtime.onMessage.addListener(function (message) {
     }
 });
 
+// Rest of the code remains the same
 function calculateTripCost(distance, callback) {
-    // Retrieve stored values from chrome.storage.sync
     chrome.storage.sync.get([
         'efficiency',
         'efficiencyUnit',
@@ -67,16 +80,12 @@ function calculateTripCost(distance, callback) {
     ], function (data) {
         if (data.costPerKilometre && data.costPerMile && data.currency) {
             let cost;
-            // Check the map unit and calculate the cost accordingly
             if (data.mapUnit === 'miles') {
                 cost = distance * data.costPerMile;
-            } else { // Assuming the default is kilometers
+            } else {
                 cost = distance * data.costPerKilometre;
             }
-            // Format the cost to two decimal places and include the currency
             const formattedCost = `${data.currency}${cost.toFixed(2)}`;
-
-            // Callback function to use the computed cost
             callback(formattedCost);
         } else {
             const divInfo = "Please input vehicle data in the extension popup to calculate fuel cost";
