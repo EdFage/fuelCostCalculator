@@ -32,4 +32,11 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+.helpText {
+    display: block;
+    color: gray;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
 

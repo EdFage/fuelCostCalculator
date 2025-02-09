@@ -22,8 +22,10 @@
         </select>
         <br />
         <label for="fuelPrice">Fuel Price:</label>
-        <input type="number" id="fuelPrice" placeholder="Enter price" style="width: 30px" required />
-
+        <input type="number" id="fuelPrice" style="width: 30px" required />
+        <small class="helpText">
+            Enter price in decimal format (e.g., 1.49 for £1.49)
+        </small>
         <select id="currency">
             <option value="$">USD ($)</option>
             <option value="€">EUR (€)</option>
@@ -51,7 +53,7 @@
         <button type="button" id="saveButton">Save</button>
         <span id="saveMessage" style="display: none; margin-left: 10px"></span>
     </form>
-    <p style="text-align:center">
+    <p style="text-align:right">
         Submit a bug report or feature request via
         <a href="https://github.com/EdFage/fuelCostCalculator/issues">github</a>
         or email me at <a href="mailto:edfagedeveloper@gmail.com">edfagedeveloper@gmail.com</a>
