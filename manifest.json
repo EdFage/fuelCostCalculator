@@ -4,10 +4,40 @@
     "version": "0.1.10",
     "description": "Calculate your fuel costs in Google Maps. Works worldwide: any currency, any car, any fuel units.",
     "permissions": ["activeTab", "storage"],
-    "host_permissions": ["https://www.google.com/maps/*", "https://www.google.co.uk/maps/*"],
+    "host_permissions": [
+        "https://www.google.com/maps/*",
+        "https://www.google.co.uk/maps/*",
+        "https://www.google.de/maps/*",
+        "https://www.google.it/maps/*",
+        "https://www.google.fr/maps/*",
+        "https://www.google.es/maps/*",
+        "https://www.google.nl/maps/*",
+        "https://www.google.pl/maps/*",
+        "https://www.google.ru/maps/*",
+        "https://www.google.co.in/maps/*",
+        "https://www.google.co.jp/maps/*",
+        "https://www.google.com.au/maps/*",
+        "https://www.google.com.br/maps/*",
+        "https://www.google.ca/maps/*"
+    ],
     "content_scripts": [
         {
-            "matches": ["https://www.google.com/maps/*", "https://www.google.co.uk/maps/*"],
+            "matches": [
+                "https://www.google.com/maps/*",
+                "https://www.google.co.uk/maps/*",
+                "https://www.google.de/maps/*",
+                "https://www.google.it/maps/*",
+                "https://www.google.fr/maps/*",
+                "https://www.google.es/maps/*",
+                "https://www.google.nl/maps/*",
+                "https://www.google.pl/maps/*",
+                "https://www.google.ru/maps/*",
+                "https://www.google.co.in/maps/*",
+                "https://www.google.co.jp/maps/*",
+                "https://www.google.com.au/maps/*",
+                "https://www.google.com.br/maps/*",
+                "https://www.google.ca/maps/*"
+            ],
             "js": ["content.js"]
         }
     ],
