@@ -31,17 +31,20 @@ chrome.runtime.onMessage.addListener(function (message) {
                 if (matches) {
                     let rawDistance = matches[0];
                     
-                    // First, handle the case where comma is used as decimal separator
-                    // This covers formats like "17,2" (European style)
-                    if (rawDistance.split(',').length === 2 && rawDistance.indexOf('.') === -1) {
+                    // First, determine the format by looking at the pattern
+                    let isEuropeanDecimal = /^\d+,\d{1,2}$/.test(rawDistance); // Matches patterns like "17,2" or "17,20"
+                    let hasThousandsSeparator = /^\d{1,3}(,\d{3})+$/.test(rawDistance); // Matches patterns like "1,000" or "1,000,000"
+
+                    if (isEuropeanDecimal) {
+                        // Handle European decimal format (e.g., "17,2")
                         rawDistance = rawDistance.replace(',', '.');
-                    } 
-                    // Then handle cases where comma is used as thousands separator
-                    else if (rawDistance.split(',').length > 1) {
+                    } else if (hasThousandsSeparator) {
+                        // Handle thousands separators (e.g., "1,000")
                         rawDistance = rawDistance.replace(/,/g, '');
                     }
                     
                     distance = parseFloat(rawDistance);
+                    console.log(distance);
                     
                     // Verify that we got a valid number
                     if (isNaN(distance)) {
